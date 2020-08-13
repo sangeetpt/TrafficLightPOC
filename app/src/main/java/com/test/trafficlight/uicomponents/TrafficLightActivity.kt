@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProviders
 import com.test.trafficlight.R
 import kotlinx.android.synthetic.main.activity_traffic_light.*
 
@@ -19,7 +18,7 @@ class TrafficLightActivity : AppCompatActivity() {
         stop()
     }
 
-    fun stop(){
+    private fun stop(){
         redLight.setBackgroundResource(R.drawable.red_circle_bg_dark)
 
         Handler(Looper.getMainLooper()).postDelayed({
@@ -28,7 +27,7 @@ class TrafficLightActivity : AppCompatActivity() {
         }, 4000) // 4 seconds
     }
 
-    fun waitt(){
+    private fun waitt(){
         orangeLight.setBackgroundResource(R.drawable.orange_circle_bg_dark)
         Handler(Looper.getMainLooper()).postDelayed({
             orangeLight.setBackgroundResource(R.drawable.orange_circle_bg_light)
@@ -37,7 +36,7 @@ class TrafficLightActivity : AppCompatActivity() {
 
     }
 
-    fun go(){
+    private fun go(){
         greenLight.setBackgroundResource(R.drawable.green_circle_bg_dark)
 
         Handler(Looper.getMainLooper()).postDelayed({

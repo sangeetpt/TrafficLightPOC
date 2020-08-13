@@ -10,6 +10,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:foregroundGravity="center"
     tools:context=".uicomponents.TrafficLightActivity">
 
     <LinearLayout
@@ -21,29 +22,44 @@
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center">
+        android:gravity="center"
+        >
 
+        <LinearLayout
+            android:id="@+id/innerLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="5dp"
+            android:background="@drawable/round_edge_corner">
         <ImageButton
             android:id="@+id/redLight"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="@dimen/imageButtonSize"
+            android:layout_height="@dimen/imageButtonSize"
             android:layout_gravity="center"
-            android:background="@drawable/red_circle_bg_light" />
+            android:layout_margin="5dp"
+            android:background="@drawable/red_circle_bg_light"
+            android:contentDescription="@string/red_image_Dec" />
 
         <ImageButton
             android:id="@+id/orangeLight"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="@dimen/imageButtonSize"
+            android:layout_height="@dimen/imageButtonSize"
             android:layout_gravity="center"
-            android:background="@drawable/orange_circle_bg_light" />
+            android:layout_margin="5dp"
+            android:background="@drawable/orange_circle_bg_light"
+            android:contentDescription="@string/orange_image_Dec"/>
 
         <ImageButton
             android:id="@+id/greenLight"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="@dimen/imageButtonSize"
+            android:layout_height="@dimen/imageButtonSize"
             android:layout_gravity="center"
-            android:background="@drawable/green_circle_bg_light" />
-
+            android:layout_margin="5dp"
+            android:background="@drawable/green_circle_bg_light"
+            android:contentDescription="@string/green_image_Dec"/>
+    </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
