@@ -31,6 +31,13 @@ constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int = R.attr.im
         } else {
             background=red_InActive
         }
+        setOnClickListener {
+            if (enabled){
+                setRedActive(false)
+            }else{
+                setRedActive(true)
+            }
+        }
     }
 
     fun setOrangeActive(enabled: Boolean) {
@@ -39,6 +46,13 @@ constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int = R.attr.im
         } else {
             background=orange_InActive
         }
+        setOnClickListener {
+            if (enabled){
+                setOrangeActive(false)
+            }else{
+                setOrangeActive(true)
+            }
+        }
     }
 
     fun setGreenActive(enabled: Boolean) {
@@ -46,6 +60,13 @@ constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int = R.attr.im
             background=green_Active
         } else {
             background=green_InActive
+        }
+        setOnClickListener {
+            if (enabled){
+                setGreenActive(false)
+            }else{
+                setGreenActive(true)
+            }
         }
     }
 
