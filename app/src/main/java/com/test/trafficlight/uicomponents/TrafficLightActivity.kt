@@ -4,44 +4,57 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
+import com.test.trafficlight.BR
 import com.test.trafficlight.R
 import kotlinx.android.synthetic.main.activity_traffic_light.*
+import com.test.trafficlight.databinding.ActivityTrafficLightBinding
 
 
 class TrafficLightActivity : AppCompatActivity() {
+
+    var trafficLightViewModel = TrafficLightViewModel()
+
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_traffic_light)
+       var  binding = DataBindingUtil.setContentView<ActivityTrafficLightBinding>(this, R.layout.activity_traffic_light)
+        binding.trafficLightViewModel = TrafficLightViewModel()
+
+        trafficLightViewModel = ViewModelProvider(this@TrafficLightActivity).get(
+            TrafficLightViewModel::class.java
+        )
 
         stop()
     }
 
-    private fun stop(){
-        redLight.setBackgroundResource(R.drawable.red_circle_bg_dark)
+    fun stop(){
 
         Handler(Looper.getMainLooper()).postDelayed({
-            redLight.setBackgroundResource(R.drawable.red_circle_bg_light)
+            redLight.setRedActive(false)
+            orangeLight.setOrangeActive(true)
             waitt()
         }, 4000) // 4 seconds
     }
 
     private fun waitt(){
-        orangeLight.setBackgroundResource(R.drawable.orange_circle_bg_dark)
         Handler(Looper.getMainLooper()).postDelayed({
-            orangeLight.setBackgroundResource(R.drawable.orange_circle_bg_light)
+            orangeLight.setOrangeActive(false)
+            greenLight.setGreenActive(true)
             go()
-        }, 1000) //1 second
-
+        }, 1000) // 1 seconds
     }
 
     private fun go(){
-        greenLight.setBackgroundResource(R.drawable.green_circle_bg_dark)
-
         Handler(Looper.getMainLooper()).postDelayed({
-            greenLight.setBackgroundResource(R.drawable.green_circle_bg_light)
+            greenLight.setGreenActive(false)
+            redLight.setRedActive(true)
             stop()
-        }, 4000) // 4 seconds
+        }, 4000) //4 seconds
     }
+
+
 }
